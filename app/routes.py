@@ -351,7 +351,7 @@ async def create_order_ready_to_ship(
                 :servicio, :horario, :destinatario, :direccion,
                 :pais, :cp, :poblacion, :telefono, :email,
                 :departamento, :contacto, :observaciones,
-                :bultos, :movil, :refC, :idOrder, :process
+                :bultos, :movil, :refC, :num_pedido_ahora, :idOrder, :process
             )
         """
 
@@ -371,6 +371,7 @@ async def create_order_ready_to_ship(
             "bultos": data.bultos,
             "movil": data.movil,
             "refC": data.refC,
+            "num_pedido_ahora": data.num_pedido_ahora,
             "idOrder": data.idOrder,
             "process": data.process
         })
@@ -400,7 +401,8 @@ async def update_order_ready_to_ship(
     - telefono, email, departamento, contacto, observaciones, bultos, movil, refC
     """
     try:
-        logger.info(f"Updating shipment for order {data.idOrder}, field: {data.columnName}")
+        logger.info(
+            f"Updating shipment for order {data.idOrder}, field: {data.columnName}")
 
         # Dynamic update query - columnName is validated by Pydantic schema
         query = f"""

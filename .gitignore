@@ -54,3 +54,5 @@ htmlcov/
 *.bat
 *.ps1
 *.bak
+
+*.config.js

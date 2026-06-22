@@ -93,6 +93,7 @@ class ShipmentData(BaseModel):
     bultos: int = Field(..., ge=1)
     movil: str = Field(default="")
     refC: str = Field(default="")
+    num_pedido_ahora: int = Field(default=None)
     idOrder: str = Field(..., min_length=1)
     process: str = Field(..., min_length=1)
     shipmentType: str = Field(..., pattern="^(usingFile|usingWS)$")
@@ -116,9 +117,9 @@ class UpdateShipment(BaseModel):
     """Schema for updating shipment data"""
     columnName: str = Field(
         ...,
-        pattern="^(servicio|horario|destinatario|direccion|pais|cp|poblacion|telefono|email|departamento|contacto|observaciones|bultos|movil|refC)$"
+        pattern="^(servicio|horario|destinatario|direccion|pais|cp|poblacion|telefono|email|departamento|contacto|observaciones|bultos|movil|refC|num_pedido_ahora)$"
     )
-    columnValue: str = Field(..., min_length=1)
+    columnValue: str = Field(...)
     idOrder: str = Field(..., min_length=1)
 
 
